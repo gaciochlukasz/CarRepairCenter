@@ -1,0 +1,54 @@
+<div style="margin-bottom: 14px">
+  <button type="submit" mat-raised-button color="primary" (click)="openDialog()">
+    <mat-icon>add</mat-icon> Dodaj pojazd
+  </button>
+</div>
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
+
+    <ng-container matColumnDef="carBrand">
+      <th style="width: 15%" mat-header-cell *matHeaderCellDef mat-sort-header> Marka </th>
+      <td style="width: 15%" mat-cell *matCellDef="let row"> {{row?.carBrand}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="carName">
+      <th style="width: 15%" mat-header-cell *matHeaderCellDef mat-sort-header> Nazwa </th>
+      <td style="width: 15%" mat-cell *matCellDef="let row"> {{row?.carName}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="registrationNo">
+      <th style="width: 15%" mat-header-cell *matHeaderCellDef mat-sort-header> Numer rej. </th>
+      <td style="width: 15%" mat-cell *matCellDef="let row"> {{row?.registrationNo}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="vinNo">
+      <th style="width: 15%" mat-header-cell *matHeaderCellDef mat-sort-header> VIN </th>
+      <td style="width: 15%" mat-cell *matCellDef="let row"> {{row?.vinNo}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="nameOwner">
+      <th style="width: 30%" mat-header-cell *matHeaderCellDef> Imię i nazwisko właściciela </th>
+      <td style="width: 30%" mat-cell *matCellDef="let row"> {{row?.nameOwner}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+      <th style="width: 10%" class="action-header" mat-sort-header mat-header-cell *matHeaderCellDef> Akcja </th>
+      <td style="width: 10%" mat-cell *matCellDef="let row">
+        <div fxLayout="row" fxLayoutGap="14px">
+          <button matTooltip="Dodaj wizyte" matTooltipPosition="right" mat-raised-button color="primary" (click)="addVisitRepair(row)">
+            <mat-icon>add</mat-icon>
+          </button>
+          <button matTooltip="Szczegóły/Edytuj" matTooltipPosition="right" mat-raised-button color="primary" (click)="openDialogForEdit(row)">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+    </tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[10]"></mat-paginator>
+</div>

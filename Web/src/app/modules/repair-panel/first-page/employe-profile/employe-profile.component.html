@@ -1,0 +1,24 @@
+<div fxFlex="25%" fxLayout="column">
+  <h3>Edycja profilu</h3>
+  <form [formGroup]="form">
+    <div style="margin: 14px" fxFlex="100%" fxLayout="column" fxLayoutGap="7px">
+      <mat-form-field>
+        <input matInput placeholder="Email" formControlName="email" readonly="true">
+        <mat-error>Pole wymagane</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Imię" formControlName="name">
+        <mat-error>Pole wymagane</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Nazwisko" formControlName="lastName">
+        <mat-error>Pole wymagane</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Numer telefonu" formControlName="phoneNumber">
+        <mat-error>Pole wymagane</mat-error>
+      </mat-form-field>
+      <button fxFlex="50%" mat-raised-button color="primary" type="submit" (click)="edit()">Edytuj</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,50 @@
+<div fxLayout="column" fxFlex="100%" fxLayoutAlign="space-between">
+  <form [formGroup]="form">
+    <div fxLayout="column" fxFlex="100%">
+      <h4 style="margin: 2px">Rejestracja</h4>
+      <mat-form-field class="full-width">
+        <input maxLength="256" matInput placeholder="Nazwa warsztatu" formControlName="garageName" required />
+        <mat-error *ngIf="form.get('garageName').hasError('required')">Pole wymagane</mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input maxLength="256" matInput placeholder="Imię" formControlName="name" required />
+        <mat-error *ngIf="form.get('name').hasError('required')">Pole wymagane</mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input maxLength="256" matInput placeholder="Nazwisko" formControlName="lastName" required />
+        <mat-error *ngIf="form.get('lastName').hasError('required')">Pole wymagane</mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input maxLength="256" type="email" matInput placeholder="Email" formControlName="email" required />
+        <mat-error *ngIf="form.get('email').hasError('required')">Pole wymagane</mat-error>
+      </mat-form-field>
+      <mat-form-field  style="padding-bottom: 7px" class="full-width">
+        <input maxLength="256" type="password" matInput placeholder="Hasło" formControlName="password" required />
+        <mat-error *ngIf="form.get('password').hasError('required')">Pole wymagane</mat-error>
+        <mat-error *ngIf="
+              form.get('password').hasError('required') ||
+              form.get('password').hasError('Len') ||
+              form.get('password').hasError('LowerCase') ||
+              form.get('password').hasError('UpperCase') ||
+              form.get('password').hasError('Digit') ||
+              form.get('password').hasError('SpecChar')
+            ">
+          Użyj co najmniej 8 znaków, małe i duże litery, cyfry oraz znaki specjalne.</mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input maxLength="256" type="password" matInput placeholder="Powtórz hasło" formControlName="passwordRepeat"
+          required />
+        <mat-error *ngIf="form.get('passwordRepeat').hasError('required')">Pole wymagane</mat-error>
+      </mat-form-field>
+      <div fxLayoutAlign="start start">
+        <button (click)="goBack()" fxFlex="40%" mat-raised-button color="primary">
+          Powrót
+        </button>
+        <div fxFlex="20%"></div>
+        <button (click)="register()" fxFlex="40%" mat-raised-button color="primary">
+          Zarejestruj
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

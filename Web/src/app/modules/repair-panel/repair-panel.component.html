@@ -1,0 +1,27 @@
+<mat-toolbar color="primary" class="example-header" fxLayoutAlign="center center">
+  <div fxFlex="33%" fxLayoutAlign="start">
+    <button #menuButton mat-flat-button color="warn" (click)="showMenu(sidenav, menuButton)">
+      <mat-icon>menu</mat-icon> Menu
+    </button>
+  </div>
+  <div fxFlex="33%" style="text-align: center ">
+      <img src="../../../assets/img/logo2.png" alt="logo-crc" style="width: 130px;">
+  </div>
+  <div fxFlex="33%" fxLayoutAlign="end">
+    <button mat-flat-button color="warn" (click)="authService.logout()">
+      Wyloguj <mat-icon>logout</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav class="example-sidenav" mode="side" (opened)="opened = true" (closed)="opened = false" opened
+    ngDefaultControl>
+    <crc-menu></crc-menu>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-card class="main-card">
+      <router-outlet></router-outlet>
+    </mat-card>
+  </mat-sidenav-content>
+</mat-sidenav-container>

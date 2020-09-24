@@ -1,0 +1,31 @@
+<div fxLayout="column">
+  <h1 mat-dialog-title>Nowy pojazd</h1>
+  <div mat-dialog-content fxFlex="100%" fxLayout="column" fxLayoutAlign="space-between stretch">
+    <form [formGroup]="form">
+      <div fxLayout="column" fxFlex="100%">
+        <mat-form-field fxFlex="100%">
+          <input matInput placeholder="Imię" formControlName="name">
+          <mat-error></mat-error>
+        </mat-form-field>
+        <mat-form-field fxFlex="100%">
+          <input matInput placeholder="Nazwisko" formControlName="lastName">
+          <mat-error></mat-error>
+        </mat-form-field>
+        <mat-form-field fxFlex="100%">
+          <input matInput placeholder="Numer telefonu" formControlName="phoneNumber">
+          <mat-error></mat-error>
+        </mat-form-field>
+      </div>
+    </form>
+  </div>
+  <div mat-dialog-actions>
+    <div fxLayoutAlign="center" fxLayout="row" fxFlex="100%">
+      <div fxLayoutAlign="start" fxFlex="50%">
+        <button mat-raised-button color="warn" (click)="dialogRef.close(false)">Anuluj</button>
+      </div>
+      <div fxLayoutAlign="end" fxFlex="50%">
+        <button mat-raised-button color="primary" type="submit" (click)="editEmployee()">Edytuj</button>
+      </div>
+    </div>
+  </div>
+</div>

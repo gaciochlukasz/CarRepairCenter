@@ -1,0 +1,37 @@
+.example-container {
+  position: absolute;
+  top: 60px;
+  bottom: 0px;
+  left: 0;
+  right: 0;
+}
+
+.example-sidenav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15%;
+}
+
+.example-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  button {
+    font-size: 20px;
+  }
+}
+:host::ng-deep {
+  .main-card {
+    padding: 14px;
+    margin: 14px;
+    mat-card-header {
+      font-size: 24px;
+      font-style: italic;
+    }
+    mat-card-content {
+      margin: 40px;
+    }
+  }
+}

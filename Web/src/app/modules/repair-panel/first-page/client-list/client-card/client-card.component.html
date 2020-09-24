@@ -1,0 +1,121 @@
+<mat-card-header>
+  {{client?.firstName}} {{client?.lastName}}
+</mat-card-header>
+<mat-card-content>
+  <mat-tab-group dynamicHeight matTabBodyPositionState="left-origin-center">
+    <mat-tab label="Dane podstawowe" class="client-card">
+      <form [formGroup]="form">
+        <div fxLayoutAlign="center" fxLayout="row">
+          <div class="client-info" fxLayoutAlign="space-between stretch" fxLayout="column" fxFlex="100%">
+            <div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="50px">
+              <div fxFlex="24%">
+                <mat-form-field fxFlex="100%">
+                  <input maxLength="256" type="text" matInput placeholder="Imię" formControlName="firstName" required />
+                  <mat-error>Pole wymagane</mat-error>
+                </mat-form-field>
+              </div>
+              <div fxFlex="24%">
+                <mat-form-field fxFlex="100%">
+                  <input maxLength="256" type="text" matInput placeholder="Nazwisko" formControlName="lastName" required />
+                  <mat-error>Pole wymagane</mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="50px">
+              <div style="cursor: pointer;" (click)="picker.open()" fxFlex="24%">
+                <mat-form-field fxFlex="100%">
+                  <input maxLength="256" style="cursor: pointer;" matInput [matDatepicker]="picker" placeholder="Data urodzenia"
+                    formControlName="birthDay" required>
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker disabled="false" touchUi #picker></mat-datepicker>
+                  <mat-error>Pole wymagane</mat-error>
+                </mat-form-field>
+              </div>
+              <div fxFlex="24%">
+                <mat-form-field fxFlex="100%">
+                  <input maxLength="256" type="text" matInput placeholder="Pesel" formControlName="pesel" required />
+                  <mat-error>Pole wymagane</mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="50px">
+              <div fxFlex="24%">
+                <mat-form-field fxFlex="100%">
+                  <input maxLength="256" type="text" matInput placeholder="Państwo" formControlName="country" required />
+                  <mat-error>Pole wymagane</mat-error>
+                </mat-form-field>
+              </div>
+              <div fxFlex="24%">
+                <mat-form-field fxFlex="100%">
+                  <input maxLength="256" type="text" matInput placeholder="Kod pocztowy" formControlName="postCode" required />
+                  <mat-error>Pole wymagane</mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="50px">
+              <div fxFlex="24%">
+                <mat-form-field fxFlex="100%">
+                  <input maxLength="256" type="text" matInput placeholder="Miasto" formControlName="city" required />
+                  <mat-error>Pole wymagane</mat-error>
+                </mat-form-field>
+              </div>
+              <div fxFlex="24%">
+                <mat-form-field fxFlex="100%">
+                  <input maxLength="256" type="text" matInput placeholder="Ulica" formControlName="street" required />
+                  <mat-error>Pole wymagane</mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+            <div fxLayout="row" fxLayputAlign="start" fxLayoutGap="50px">
+              <div fxFlex="24%">
+                <mat-form-field fxFlex="100%">
+                  <input maxLength="256" type="text" matInput placeholder="Numer domu" formControlName="houseNo" required />
+                  <mat-error>Pole wymagane</mat-error>
+                </mat-form-field>
+              </div>
+              <div fxFlex="24%">
+                <mat-form-field fxFlex="100%">
+                  <input maxLength="256" type="text" matInput placeholder="Numer mieszkania" formControlName="flatNo" required />
+                  <mat-error>Pole wymagane</mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+            <div fxLayout="row" fxLayputAlign="start" fxLayoutGap="50px">
+              <div fxFlex="24%">
+                <mat-form-field fxFlex="100%">
+                  <input maxLength="256" type="email" matInput placeholder="Email" formControlName="email" required />
+                  <mat-error>Pole wymagane</mat-error>
+                </mat-form-field>
+              </div>
+              <div fxFlex="24%">
+                <mat-form-field fxFlex="100%">
+                  <input maxLength="256" type="text" matInput placeholder="Numer telefonu" formControlName="phone" required />
+                  <mat-error>Pole wymagane</mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+            <div fxFlex="100%" fxLayout="row" fxLayoutAlign="start">
+              <div fxFlex=20%>
+                <button type="submit" fxFlex="80%" #menuButton mat-raised-button color="primary"
+                  (click)="updateClient()">
+                  <mat-icon>autorenew</mat-icon>
+                  Zaktualizuj dane klienta
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </mat-tab>
+    <mat-tab label="Pojazdy">
+      <ng-template matTabContent>
+        <crc-car-list [clientId]="clientId"></crc-car-list>
+      </ng-template>
+    </mat-tab>
+    <mat-tab label="Historia napraw">
+      <ng-template matTabContent>
+        <crc-repair-history [clientId]="clientId"></crc-repair-history>
+      </ng-template>
+    </mat-tab>
+  </mat-tab-group>
+</mat-card-content>

@@ -1,0 +1,30 @@
+<div fxLayout="column" fxFlex="100%" fxLayoutAlign="space-between">
+  <form [formGroup]="form">
+    <div fxLayout="column" fxFlex="100%">
+      <mat-form-field class="full-width">
+        <input maxLength="256" type="email" matInput placeholder="Email" formControlName="email" required />
+        <mat-error *ngIf="form.get('email').hasError('required')">Pole wymagane</mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input maxLength="256" type="password" matInput placeholder="Hasło" formControlName="password" required />
+        <mat-error *ngIf="form.get('password').hasError('required')">Pole wymagane</mat-error>
+      </mat-form-field>
+      <div fxLayoutAlign="center start">
+        <button (click)="go()" fxFlex="50%" mat-raised-button color="primary">
+          Zaloguj
+        </button>
+      </div>
+      <div *ngIf="wrongLoginOrPassword" class="worng-login-or-password">
+        Błędny login lub hasło
+      </div>
+    </div>
+  </form>
+
+  <div style="margin-top: 10px" fxLayout="row" fxLayoutAlign="center center">
+    <div fxFlex="50%" fxLayoutAlign="center start">
+      <button (click)="register()" fxFlex="90%" mat-button>
+        Utwórz konto
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+  <label>asfdasdfasdf</label>
+  <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+    <button style="width: 100%; text-align: left"  (click)="onClickMenu(node)" mat-button>
+      {{node.name}}
+    </button>
+  </mat-tree-node>
+  <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
+    <button *ngIf="accessToMenu(node.access)" style="width: 100%; text-align: left" mat-button matTreeNodeToggle [attr.aria-label]="'toggle ' + node.name" (click)="onClickMenu(node)">
+      <mat-icon class="mat-icon-rtl-mirror">
+        {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+      </mat-icon>
+      {{node.name}}
+    </button>
+  </mat-tree-node>
+</mat-tree>

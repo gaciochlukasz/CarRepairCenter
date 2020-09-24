@@ -1,0 +1,54 @@
+<div *ngIf="visitStatus == repairStatusEnum.Warsztat" style="margin: 14px 0px">
+  <button type="submit" mat-raised-button color="primary" (click)="addService()">
+    <mat-icon>add</mat-icon> Dodaj usługę
+  </button>
+</div>
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
+
+    <ng-container matColumnDef="service">
+      <th style="width: 25%" mat-header-cell *matHeaderCellDef mat-sort-header> Nazwa usługi </th>
+      <td style="width: 25%" mat-cell *matCellDef="let row"> {{row?.service}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="servicePrice">
+      <th style="width: 20%" mat-header-cell *matHeaderCellDef mat-sort-header> Cena usługi </th>
+      <td style="width: 20%" mat-cell *matCellDef="let row"> {{row?.servicePrice}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="partsPrice">
+      <th style="width: 20%" mat-header-cell *matHeaderCellDef mat-sort-header> Cena części </th>
+      <td style="width: 20%" mat-cell *matCellDef="let row"> {{row?.partsPrice}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="done">
+      <th style="width: 20%" mat-header-cell *matHeaderCellDef mat-sort-header> Ukończono </th>
+      <td style="width: 20%" mat-cell *matCellDef="let row">
+        <mat-slide-toggle [disabled]="visitStatus != repairStatusEnum.Warsztat" class="example-margin" color="primary" [checked]="row?.done"
+          (change)="changeServiceStatus($event, row)"></mat-slide-toggle>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+      <th style="width: 15%" class="action-header" mat-header-cell *matHeaderCellDef mat-sort-header> Akcja </th>
+      <td style="width: 15%" mat-cell *matCellDef="let row">
+        <div fxLayout="row" fxLayoutAlign="space-evenly center">
+          <button *ngIf="visitStatus == repairStatusEnum.Warsztat" matTooltip="Edytuj usługę" matTooltipPosition="right" mat-raised-button color="primary"
+            (click)="editService(row)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button *ngIf="visitStatus == repairStatusEnum.Warsztat" matTooltip="Usuń usługę" matTooltipPosition="right" mat-raised-button color="warn"
+            (click)="deleteService(row?.id)">
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+    </tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[10]"></mat-paginator>
+</div>

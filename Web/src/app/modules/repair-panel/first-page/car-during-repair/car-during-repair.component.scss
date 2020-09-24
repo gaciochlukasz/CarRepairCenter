@@ -1,0 +1,22 @@
+@import 'src/_variables.scss';
+
+:host::ng-deep {
+    mat-card-content {
+        margin-top: 0px !important;
+    }
+    mat-card-header {
+        // background-color: $primary;
+        margin-left: 28px;
+        font-size: 20px !important;
+    }
+}
+:host::ng-deep {
+    .mat-form-field-label {
+        font-size: 24px;
+        margin-bottom: 24px;
+    }
+    textarea.mat-input-element.cdk-textarea-autosize {
+        padding-top: 14px;
+    }
+  }
+  

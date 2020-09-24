@@ -1,0 +1,55 @@
+<mat-card-header>
+  Lista klientów
+</mat-card-header>
+<mat-card-content>
+  <mat-form-field>
+    <input maxLength="256" matInput (keyup)="applyFilter($event.target.value)" placeholder="Szukaj">
+  </mat-form-field>
+
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <ng-container matColumnDef="firstName">
+        <th style="width: 15%" mat-header-cell *matHeaderCellDef mat-sort-header> Imię </th>
+        <td style="width: 15%" mat-cell *matCellDef="let row"> {{row?.firstName}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="lastName">
+        <th style="width: 15%" mat-header-cell *matHeaderCellDef mat-sort-header> Nazwisko </th>
+        <td style="width: 15%" mat-cell *matCellDef="let row"> {{row?.lastName}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="pesel">
+        <th style="width: 15%" mat-header-cell *matHeaderCellDef mat-sort-header> Pesel </th>
+        <td style="width: 15%" mat-cell *matCellDef="let row"> {{row?.pesel}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="phone">
+        <th style="width: 15%" mat-header-cell *matHeaderCellDef mat-sort-header> Nr telefony </th>
+        <td style="width: 15%" mat-cell *matCellDef="let row"> {{row?.phone}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="address">
+        <th style="width: 30%" mat-header-cell *matHeaderCellDef> Adres </th>
+        <td style="width: 30%" mat-cell *matCellDef="let row"> {{row?.street}} {{row?.houseNo}}/{{row?.flatNo}},
+          {{row?.postCode}} {{row?.city}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <th style="width: 10%" class="action-header" mat-sort-header mat-header-cell *matHeaderCellDef> Akcja </th>
+        <td style="width: 10%" mat-cell *matCellDef="let row" style="text-align: center">
+          <button matTooltip="Panel klienta" matTooltipPosition="right" mat-raised-button color="primary"
+            (click)="clientCard(row.id)">
+            <mat-icon>account_circle</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+      </tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[10]"></mat-paginator>
+  </div>
+</mat-card-content>

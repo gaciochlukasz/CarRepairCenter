@@ -1,0 +1,127 @@
+<h1 mat-dialog-title>Nowy pojazd</h1>
+<div mat-dialog-content>
+  <form [formGroup]="form">
+    <div fxLayoutAlign="center" fxLayout="row">
+      <div class="client-info" fxLayoutAlign="space-between stretch" fxLayout="column" fxFlex="100%">
+        <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="50px">
+          <div fxFlex="49%">
+            <mat-form-field fxFlex="100%">
+              <input maxLength="256" type="text" matInput placeholder="Marka" formControlName="carBrand" required />
+              <mat-error>Pole wymagane</mat-error>
+            </mat-form-field>
+          </div>
+          <div fxFlex="49%">
+            <mat-form-field fxFlex="100%">
+              <input maxLength="256" type="text" matInput placeholder="Nazwa samochodu" formControlName="carName" required />
+              <mat-error>Pole wymagane</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="50px">
+          <div style="cursor: pointer;" (click)="picker.open()" fxFlex="49%">
+            <mat-form-field fxFlex="100%">
+              <input maxLength="256" style="cursor: pointer;" matInput [matDatepicker]="picker" placeholder="Data pierwszej rejestracji"
+                formControlName="firstRegisterDate" required>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker disabled="false" touchUi #picker></mat-datepicker>
+              <mat-error>Pole wymagane</mat-error>
+            </mat-form-field>
+          </div>
+          <div fxFlex="49%">
+            <mat-form-field fxFlex="100%">
+              <input maxLength="256" type="text" matInput placeholder="Numer rejestracyjny" formControlName="registrationNo" required />
+              <mat-error>Pole wymagane</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="50px">
+          <div fxFlex="49%">
+            <mat-form-field fxFlex="100%">
+              <input maxLength="256" type="text" matInput placeholder="VIN" formControlName="vinNo" required />
+              <mat-error>Pole wymagane</mat-error>
+            </mat-form-field>
+          </div>
+          <div fxFlex="49%">
+            <mat-form-field fxFlex="100%">
+              <input maxLength="256" type="text" matInput placeholder="Imię i nazwisko właściciela" formControlName="nameOwner"
+                required />
+              <mat-error>Pole wymagane</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="50px">
+          <div fxFlex="49%">
+            <mat-form-field fxFlex="100%">
+              <input maxLength="256" type="text" matInput placeholder="Pesel lub Regon właściciela" formControlName="peselOrRegonOwner"
+                required />
+              <mat-error>Pole wymagane</mat-error>
+            </mat-form-field>
+          </div>
+          <div fxFlex="49%">
+            <mat-form-field fxFlex="100%">
+              <input maxLength="256" type="text" matInput placeholder="Adres właściciela" formControlName="addressOwner" required />
+              <mat-error>Pole wymagane</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="50px">
+          <div fxFlex="49%">
+            <mat-form-field fxFlex="100%">
+              <input maxLength="256" type="text" matInput placeholder="Waga samochodu" formControlName="carWeight" required />
+              <mat-error>Pole wymagane</mat-error>
+            </mat-form-field>
+          </div>
+          <div fxFlex="49%">
+            <mat-form-field fxFlex="100%">
+              <input maxLength="256" type="text" matInput placeholder="Pojemność silnika" formControlName="engineCapacity" required />
+              <mat-error>Pole wymagane</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="50px">
+          <div fxFlex="49%">
+            <mat-form-field fxFlex="100%">
+              <input maxLength="256" type="email" matInput placeholder="Moc silnika" formControlName="enginePower" required />
+              <mat-error>Pole wymagane</mat-error>
+            </mat-form-field>
+          </div>
+          <div fxFlex="49%">
+            <mat-form-field fxFlex="100%">
+              <mat-label>Typ samochodu</mat-label>
+              <mat-select formControlName="carType" required>
+                <mat-option *ngFor="let item of keysCarType" [value]="item.key">
+                  {{item.value}}
+                </mat-option>
+              </mat-select>
+              <mat-error>Pole wymagane</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="50px">
+          <div fxFlex="49%">
+            <mat-form-field fxFlex="100%">
+              <mat-label>Rodzaj paliwa</mat-label>
+              <mat-select formControlName="fuelType" required>
+                <mat-option *ngFor="let item of keysFuelType" [value]="item.key">
+                  {{item.value}}
+                </mat-option>
+              </mat-select>
+              <mat-error>Pole wymagane</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <div fxLayoutAlign="center" fxLayout="row" fxFlex="100%">
+    <div fxLayoutAlign="start" fxFlex="50%">
+      <button fxFlex="50%" mat-raised-button color="warn" (click)="dialogRef.close(false)">Anuluj</button>
+    </div>
+    <div fxLayoutAlign="end" fxFlex="50%">
+      <button *ngIf="!forEdit" fxFlex="50%" mat-raised-button color="primary" type="submit" (click)="addCar()">Dodaj</button>
+      <button *ngIf="forEdit" fxFlex="50%" mat-raised-button color="primary" type="submit" (click)="editCar()">Edytuj</button>
+    </div>
+  </div>
+</div>

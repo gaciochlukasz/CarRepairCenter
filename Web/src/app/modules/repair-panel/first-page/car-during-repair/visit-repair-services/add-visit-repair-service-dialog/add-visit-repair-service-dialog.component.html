@@ -1,0 +1,35 @@
+<h1 mat-dialog-title *ngIf="!data.forEdit">Dodaj usługę</h1>
+<h1 mat-dialog-title *ngIf="data.forEdit">Edytuj usługę</h1>
+<form [formGroup]="form">
+  <div fxLayoutAlign="space-between stretch" fxLayout="column" fxFlex="100%">
+    <div fxFlex="100%" fxLayoutAlign="center center">
+      <mat-form-field fxFlex="100%">
+        <input maxLength="256" type="text" matInput placeholder="Nazwa usługi" formControlName="service" required />
+        <mat-error>Pole wymagane</mat-error>
+      </mat-form-field>
+    </div>
+    <div fxFlex="100%" fxLayoutAlign="center center">
+      <mat-form-field fxFlex="100%">
+        <input maxLength="256" type="text" matInput placeholder="Cena usługi" formControlName="servicePrice" required />
+        <mat-error>Pole wymagane</mat-error>
+      </mat-form-field>
+    </div>
+    <div fxFlex="100%" fxLayoutAlign="center center">
+      <mat-form-field fxFlex="100%">
+        <input maxLength="256" type="text" matInput placeholder="Cena części" formControlName="partsPrice" required />
+        <mat-error>Pole wymagane</mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+</form>
+<div mat-dialog-actions fxLayout="row" fxLayoutAlign="center center">
+  <div fxFlex="50%" fxLayoutAlign="center center" fxLayout="row">
+    <button fxFlex="70%" mat-raised-button color="warn" (click)="dialogRef.close(false)">Anuluj</button>
+  </div>
+  <div fxFlex="50%" fxLayoutAlign="center center" fxLayout="row">
+    <button *ngIf="!data.forEdit" type="submit" fxFlex="70%" mat-raised-button color="primary" cdkFocusInitial
+      (click)="addService()">Dodaj</button>
+    <button *ngIf="data.forEdit" type="submit" fxFlex="70%" mat-raised-button color="primary" cdkFocusInitial
+      (click)="editService()">Edytuj</button>
+  </div>
+</div>

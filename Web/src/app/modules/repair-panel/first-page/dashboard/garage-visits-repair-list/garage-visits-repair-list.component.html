@@ -1,0 +1,47 @@
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
+
+    <ng-container matColumnDef="carBrand">
+      <th style="width: 25%" mat-header-cell *matHeaderCellDef mat-sort-header> Marka </th>
+      <td style="width: 25%" mat-cell *matCellDef="let row"> {{ row?.car.carBrand }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="carModel">
+      <th style="width: 20%" mat-header-cell *matHeaderCellDef mat-sort-header> Model </th>
+      <td style="width: 20%" mat-cell *matCellDef="let row"> {{ row?.car.carName }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="registrationNo">
+      <th style="width: 20%" mat-header-cell *matHeaderCellDef mat-sort-header> Numer rej. </th>
+      <td style="width: 20%" mat-cell *matCellDef="let row"> {{ row?.car.registrationNo }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="firstName">
+      <th style="width: 20%" mat-header-cell *matHeaderCellDef mat-sort-header> Imię </th>
+      <td style="width: 20%" mat-cell *matCellDef="let row">{{ row?.client.firstName }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="lastName">
+      <th style="width: 20%" mat-header-cell *matHeaderCellDef mat-sort-header> Nazwisko </th>
+      <td style="width: 20%" mat-cell *matCellDef="let row">{{ row?.client.lastName }}</td>
+    </ng-container>1
+
+    <ng-container matColumnDef="action">
+      <th style="width: 15%" class="action-header" mat-header-cell *matHeaderCellDef mat-sort-header> Akcja </th>
+      <td style="width: 15%" mat-cell *matCellDef="let row">
+        <div fxLayout="row" fxLayoutAlign="space-evenly center">
+          <button matTooltip="Przejdź do wizyty" matTooltipPosition="right" mat-raised-button color="primary"
+            (click)="goToVisit(row?.id)">
+            <mat-icon>arrow_right_alt</mat-icon>
+          </button>
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+    </tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[10]"></mat-paginator>
+</div>

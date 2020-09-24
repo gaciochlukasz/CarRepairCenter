@@ -1,0 +1,50 @@
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
+
+    <ng-container matColumnDef="firstName">
+      <th style="width: 20%" mat-header-cell *matHeaderCellDef mat-sort-header> Imię </th>
+      <td style="width: 20%" mat-cell *matCellDef="let row"> {{row?.name}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="lastName">
+      <th style="width: 20%" mat-header-cell *matHeaderCellDef mat-sort-header> Nazwisko </th>
+      <td style="width: 20%" mat-cell *matCellDef="let row"> {{row?.lastName}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <th style="width: 20%" mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+      <td style="width: 20%" mat-cell *matCellDef="let row"> {{row?.email}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="phone">
+      <th style="width: 20%" mat-header-cell *matHeaderCellDef mat-sort-header> Numer telefonu </th>
+      <td style="width: 20%" mat-cell *matCellDef="let row"> {{row?.phoneNumber}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="active">
+        <th style="width: 10%" mat-header-cell *matHeaderCellDef mat-sort-header> Aktywny </th>
+        <td style="width: 10%" mat-cell *matCellDef="let row">
+          <mat-slide-toggle class="example-margin" color="primary" [checked]="row?.active"
+            (change)="changeEmployeeStatus($event, row)"></mat-slide-toggle>
+        </td>
+      </ng-container>
+
+    <ng-container matColumnDef="action">
+      <th style="width: 10%" class="action-header" mat-sort-header mat-header-cell *matHeaderCellDef> Akcja </th>
+      <td style="width: 10%" mat-cell *matCellDef="let row">
+        <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="14px">
+          <button matTooltip="Szczegóły/Edytuj" matTooltipPosition="right" mat-raised-button color="primary"
+            (click)="editEmployee(row)">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+    </tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[10]"></mat-paginator>
+</div>

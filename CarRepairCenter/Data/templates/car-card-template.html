@@ -1,0 +1,232 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta content="pl" http-equiv="Content-Language" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <style type="text/css">
+        .center {
+            text-align: center;
+        }
+
+        .border {
+            border-width: 3px;
+            border-color: black;
+            border-style: solid;
+        }
+
+        .podpis {
+            border-bottom-width: 2px;
+            border-bottom-color: black;
+            border-bottom-style: solid;
+        }
+
+        .border-dashed {
+            border-width: 1px;
+            border-color: black;
+            border-style: dashed;
+            padding: 1px;
+        }
+
+        .padding {
+            padding: 14px 30px;
+        }
+
+        .margin {
+            margin: 24px;
+        }
+
+        h3 {
+            text-decoration: underline;
+            margin: 0px;
+        }
+
+        td {
+            padding: 7px;
+        }
+    </style>
+</head>
+<body style="font-size: 20px; margin: 0 24px;">
+    <div class="border center padding margin" style="font-size: 34px">
+        KARTA PRZYJĘCIA SAMOCHODU DO WARSZTATU
+    </div>
+    <div style="margin-bottom: 24px">
+        <hr />
+        <table>
+            <tr style="vertical-align: top; width: 100%">
+                <td style="width: 20%">
+                    Data przyjęcia:
+                    <br /> {{car_card_acceptance_date}}
+
+                </td>
+                <td style="width: 50%">
+                    Dane garażu: <br />
+                    {{garage_name}}<br />
+                    {{garage_address}}
+                    <br />
+                    {{#if garage_nip}} Nip: {{garage_nip}}{{/if}}
+                    <br />{{#if garage_regon}} REGON: {{garage_regon}}{{/if}}
+                    <br />
+                    {{#if garage_phone}} Telefon: {{garage_phone}}{{/if}}
+                </td>
+                <td style="width: 30%">
+                    Pieczątka serwisu:
+                    <div style="width: 400px; height: 100px" class="border-dashed"></div>
+                </td>
+            </tr>
+        </table>
+        <hr />
+        <h3>Dane klienta:</h3>
+        <table style="width: 100%">
+            <tr style="width: 100%">
+                <td style="width: 70%">
+                    <b>Imię i nazwisko:</b>
+                    <div class="border-dashed">
+                        {{client_name}}
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <table style="width: 100%">
+            <tr style="width: 100%">
+                <td style="width: 70%">
+                    <b> Adres zamieszkania: </b><br />
+                    <div class="border-dashed">
+                        {{client_address}}
+                    </div>
+                </td>
+                <td style="margin-left: 7px; width: 30%">
+                    <b> Numer telefonu: </b><br />
+                    <div style="width: 100%" class="border-dashed">
+                        {{client_phone}}
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <hr />
+        <h3>Dane samochodu: </h3>
+        <table style="width: 100%">
+            <tr>
+                <td width="50%">
+                    <b>Model: </b><br />
+                    <div class="border-dashed">
+                        {{car_car_brand}} {{car_car_name}}
+                    </div>
+                </td>
+                <td width="50%">
+                    <b>VIN: </b><br />
+                    <div class="border-dashed">
+                        {{car_vin}}
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <table style="width: 100%">
+            <tr>
+                <td width="20%">
+                    <b>Poj. silnika(cm3): </b><br />
+                    <div class="border-dashed">
+                        {{car_engine_capacity}}
+                    </div>
+                </td>
+                <td width="20%">
+                    <b>Moc silnika: </b><br />
+                    <div class="border-dashed">
+                        {{car_engine_power}}
+                    </div>
+                </td>
+                <td width="20%">
+                    <b>Rok produkcji: </b><br />
+                    <div class="border-dashed">
+                        {{#if car_production_date}} {{car_production_date}} {{else}}.{{/if}}
+                    </div>
+                </td>
+                <td width="20%">
+                    <b>Nr rejestracyjny: </b><br />
+                    <div class="border-dashed">
+                        {{car_registration_no}}
+                    </div>
+                </td>
+                <td width="20%">
+                    <b>Przebieg: </b><br />
+                    <div class="border-dashed">
+                        {{#if car_mileage}} {{car_mileage}} {{else}}.{{/if}}
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <hr />
+        <h3>Informacje dodatkowe: </h3>
+        <table style="width: 100%">
+            <tr style="vertical-align:top">
+                <td style="width:60%">
+                    <table>
+                        <tr style="vertical-align: top; font-size: 16px">
+                            <td>
+                                <b>Termin odbioru:</b>
+                                <div class="border-dashed">
+                                    {{#if car_card_receip_date}} {{car_card_receip_date}}{{else}}.{{/if}}
+                                </div>
+                                <br />
+                                <b>Szacunkowy koszt usługi:</b>
+                                <div class="border-dashed">
+                                    {{#if car_card_estimate_cost}} {{car_card_estimate_cost}}{{else}}.{{/if}}
+                                </div>
+                            </td>
+                            <td>
+                                <b>Pozostawione wartościowe przedmioty:</b>
+                                <div class="border-dashed" style="height: 80px">
+                                    {{#if car_card_valuables}} {{car_card_valuables}} {{else}}.{{/if}}
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td style="width:40%; text-align:center">
+                    <img style="width: 100%; height: 35%;" src="file:./car_diagnose.jpg" />
+                </td>
+            </tr>
+        </table>
+        <table>
+            <tr style="vertical-align: top;">
+                <td>
+                    <b>Opis stanu technicznego z zewnątrz:</b>
+                    <div class="border-dashed">
+                        {{#if car_card_external_condition_description}} {{car_card_external_condition_description}}
+                        {{else}}.{{/if}}
+                    </div>
+                </td>
+                <td>
+                    <b>Pozostawione dokumenty:</b><br />
+                    Dowód rejestracyjny: {{car_card_registration_document}} <br />
+                    OC: {{car_card_oc_document}}
+                </td>
+                <td>
+                    <br />
+                    Pozostawione kluczyki: {{car_card_key_left}}
+                </td>
+            </tr>
+        </table>
+        <hr />
+        <h3>Zakres prac zleconych przez klienta: </h3>
+        <table style="width: 100%">
+            <tr  style="width: 100%; height: 100%; vertical-align: top;">
+                <td style="width: 60%; height: 100%">
+                    <b>Opis:</b><br />
+                    <div class="border-dashed" style="height: 100%">
+                        {{#if car_card_fault_description}} {{car_card_fault_description}}
+                        {{else}}.{{/if}}
+                    </div>
+                </td>
+                <td style="width:40%; text-align:center">
+                    <br />
+                    Zgoda na jazdę próbną: {{car_card_test_drive}}<br />
+                    Zwrot zużytych części: {{car_card_used_parts_return}}<br /><br /><br /><br /><br /><br /><br /><br />
+                    <div class="podpis" style="width: 100%"></div>
+                    <label style="font-size: 12px">Czytelny podpis klienta</label>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

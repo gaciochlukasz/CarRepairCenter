@@ -1,0 +1,76 @@
+<div class="ui-g">
+  <div class="ui-g-12 person-data">
+    <form [formGroup]="form">
+      <div class="ui-g-12 field">
+        <span class="md-inputfield">
+          <input maxLength="256" formControlName="firstName" pInputText /> <label>Imię</label>
+          <div>
+            <div *ngIf="form.get('firstName').hasError('required') && form.get('firstName').touched" class="ui-message ui-messages-error ui-corner-all">
+              Pole wymagane.
+            </div>
+          </div>
+        </span>
+      </div>
+      <div class="ui-g-12 field">
+        <span class="md-inputfield">
+          <input maxLength="256" formControlName="lastName" pInputText /> <label>Nazwisko</label>
+          <div>
+            <div *ngIf="form.get('lastName').hasError('required') && form.get('lastName').touched" class="ui-message ui-messages-error ui-corner-all">
+              Pole wymagane.
+            </div>
+          </div>
+        </span>
+      </div>
+      <div class="ui-g-12 field">
+        <span class="md-inputfield">
+          <input maxLength="256" formControlName="country" pInputText /> <label>Państwo</label>
+          <div>
+            <div *ngIf="form.get('country').hasError('required') && form.get('country').touched" class="ui-message ui-messages-error ui-corner-all">
+              Pole wymagane.
+            </div>
+          </div>
+        </span>
+      </div>
+      <div class="ui-g-12 field">
+        <span class="md-inputfield">
+          <input maxLength="256" formControlName="city" pInputText /> <label>Miasto</label>
+          <div>
+            <div *ngIf="form.get('city').hasError('required') && form.get('city').touched" class="ui-message ui-messages-error ui-corner-all">
+              Pole wymagane.
+            </div>
+          </div>
+        </span>
+      </div>
+      <div class="ui-g-12 field">
+        <span class="md-inputfield">
+          <input maxLength="256" formControlName="postCode" pInputText /> <label>Kod pocztowy</label>
+          <div>
+            <div *ngIf="form.get('postCode').hasError('required') && form.get('postCode').touched" class="ui-message ui-messages-error ui-corner-all">
+              Pole wymagane.
+            </div>
+          </div>
+        </span>
+      </div>
+      <div class="ui-g-12 field">
+        <span class="md-inputfield">
+          <input maxLength="256" formControlName="street" pInputText /> <label>Ulica</label>
+          <div>
+            <div *ngIf="form.get('street').hasError('required') && form.get('street').touched" class="ui-message ui-messages-error ui-corner-all">
+              Pole wymagane.
+            </div>
+          </div>
+        </span>
+      </div>
+      <div class="ui-g-12 field">
+        <span class="md-inputfield">
+          <input maxLength="256" formControlName="houseNr" pInputText /> <label>Nr domu</label>
+          <div>
+            <div *ngIf="form.get('houseNr').hasError('required') && form.get('houseNr').touched" class="ui-message ui-messages-error ui-corner-all">
+              Pole wymagane.
+            </div>
+          </div>
+        </span>
+      </div>
+    </form>
+  </div>
+</div>

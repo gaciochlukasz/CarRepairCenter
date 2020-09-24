@@ -1,0 +1,101 @@
+<mat-card-header>
+  Dodaj nowego klienta
+</mat-card-header>
+<mat-card-content>
+  <form [formGroup]="form">
+    <div fxLayoutAlign="center" fxLayout="row">
+      <div class="client-info" fxLayoutAlign="space-between stretch" fxLayout="column" fxFlex="100%">
+        <div fxLayout="row" fxLayoutAlign="space-around start">
+          <div fxFlex="48%">
+            <mat-form-field fxFlex="100%">
+              <input maxLength="256" type="text" matInput placeholder="Imię" formControlName="firstName" required />
+              <mat-error>Pole wymagane</mat-error>
+            </mat-form-field>
+          </div>
+          <div fxFlex="48%">
+            <mat-form-field fxFlex="100%">
+              <input maxLength="256" type="text" matInput placeholder="Nazwisko" formControlName="lastName" required />
+              <mat-error>Pole wymagane</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-around  start">
+          <div style="cursor: pointer;" (click)="picker.open()" fxFlex="24%">
+            <mat-form-field fxFlex="100%">
+              <input maxLength="256" style="cursor: pointer;" matInput [matDatepicker]="picker" placeholder="Data urodzenia" formControlName="birthDay" required>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker disabled="false" touchUi #picker></mat-datepicker>
+              <mat-error>Pole wymagane</mat-error>
+            </mat-form-field>
+          </div>
+          <div fxFlex="35%">
+            <mat-form-field fxFlex="100%">
+              <input maxLength="256" type="text" matInput placeholder="Pesel" formControlName="pesel" required />
+              <mat-error *ngIf="form.get('pesel').hasError('required')">Pole wymagane</mat-error>
+              <mat-error *ngIf="form.get('pesel').hasError('WrongPesel')">Błędny pesel</mat-error>
+            </mat-form-field>
+          </div>
+          <div fxFlex="35%">
+            <mat-form-field fxFlex="100%">
+              <input maxLength="256" type="text" matInput placeholder="Państwo" formControlName="country" required />
+              <mat-error>Pole wymagane</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-around  center">
+          <div fxFlex="31%">
+            <mat-form-field fxFlex="100%">
+              <input maxLength="256" type="text" matInput placeholder="Kod pocztowy" formControlName="postCode" required />
+              <mat-error>Pole wymagane</mat-error>
+            </mat-form-field>
+          </div>
+          <div fxFlex="31%">
+            <mat-form-field fxFlex="100%">
+              <input maxLength="256" type="text" matInput placeholder="Miasto" formControlName="city" required />
+              <mat-error>Pole wymagane</mat-error>
+            </mat-form-field>
+          </div>
+          <div fxFlex="31%">
+            <mat-form-field fxFlex="100%">
+              <input maxLength="256" type="text" matInput placeholder="Ulica" formControlName="street" required />
+              <mat-error>Pole wymagane</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-around  center">
+          <div fxFlex="20%">
+            <mat-form-field fxFlex="100%">
+              <input maxLength="256" type="text" matInput placeholder="Numer domu" formControlName="houseNo" required />
+              <mat-error>Pole wymagane</mat-error>
+            </mat-form-field>
+          </div>
+          <div fxFlex="20%">
+            <mat-form-field fxFlex="100%">
+              <input maxLength="256" type="text" matInput placeholder="Numer mieszkania" formControlName="flatNo" />
+              <mat-error>Błędny adres email</mat-error>
+            </mat-form-field>
+          </div>
+          <div fxFlex="26%">
+            <mat-form-field fxFlex="100%">
+              <input maxLength="256" type="email" matInput placeholder="Email" formControlName="email" />
+            </mat-form-field>
+          </div>
+          <div fxFlex="26%">
+              <mat-form-field fxFlex="100%">
+                <input maxLength="256" type="text" matInput placeholder="Numer telefonu" formControlName="phone" required />
+                <mat-error>Pole wymagane</mat-error>
+              </mat-form-field>
+            </div>
+        </div>
+        <div fxFlex="100%" fxLayout="row" fxLayoutAlign="end">
+          <div fxFlex=25%>
+            <button type="submit" fxFlex="80%" #menuButton mat-raised-button color="primary" (click)="addClient()">
+              <mat-icon>add</mat-icon>
+              Dodaj
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</mat-card-content>

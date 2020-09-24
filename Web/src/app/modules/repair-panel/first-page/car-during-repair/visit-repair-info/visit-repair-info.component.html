@@ -1,0 +1,29 @@
+<div fxFlex="100%" fxLayout="row">
+  <div fxFlex="50%" fxLayout="column">
+    <p style="text-align: center"><b>Informacje o wizycie</b></p>
+    <p><b>Data przyjęcia pojazdu: </b>{{ visit?.visitCarCard.acceptanceDate | date: 'dd.MM.yyyy': '+400' }}</p>
+    <p><b>Przewidywana data naprawy: </b>{{ visit?.visitCarCard.receiptDate ? (visit?.visitCarCard.receiptDate | date: 'dd.MM.yyyy': '+400') : 'Brak' }}</p>
+    <p><b>Przewidywana cena naprawy: </b>{{ visit?.visitCarCard.estimateCost ? visit?.visitCarCard.estimateCost : 'Brak' }}</p>
+    <p><b>Pozostawione wartościowe przedmioty: </b>{{ visit?.visitCarCard.valuables ? visit?.visitCarCard.valuables : 'Brak' }}</p>
+    <p><b>Opis stanu technicznego: </b>{{ visit?.visitCarCard.externalConditionDescription ? visit?.visitCarCard.externalConditionDescription : 'Brak' }}</p>
+    <p><b>Opis usterki: </b>{{ visit?.visitCarCard.faultDescription ? visit?.visitCarCard.faultDescription : 'Brak' }}</p>
+    <p><b>Pozostawiony dowód rejestracyjny: </b>{{ visit?.visitCarCard.registrationDocument ? 'Tak' : 'Nie' }}</p>
+    <p><b>Pozostawiony dokument OC: </b>{{ visit?.visitCarCard.ocDocument ? 'Tak' : 'Nie' }}</p>
+    <p><b>Pozostawione kluczyki: </b>{{ visit?.visitCarCard.keyLeft ? 'Tak' : 'Nie' }}</p>
+    <p><b>Zgoda na jazdę próbną: </b>{{ visit?.visitCarCard.testDriveConsent ? 'Tak' : 'Nie' }}</p>
+    <p><b>Zwrot zużytych części: </b>{{ visit?.visitCarCard.usedPatrsReturn ? 'Tak' : 'Nie' }}</p>
+  </div>
+  <div fxFlex="50%" fxLayout="column">
+    <p style="text-align: center"><b>Informacje o samochodzie</b></p>
+    <p><b>Marka:</b> {{ visit?.car.carBrand }}</p>
+    <p><b>Model: </b>{{ visit?.car.carName }}</p>
+    <p><b>Numer rejestracyjny: </b>{{ visit?.car.registrationNo }}</p>
+    <p><b>Typ: </b>{{ carType }}</p>
+    <p><b>Numer Vin: </b>{{ visit?.car.vinNo }}</p>
+    <p><b>Imię i nazwisko właściciela: </b>{{ visit?.car.nameOwner }}</p>
+    <p><b>Waga: </b>{{ visit?.car.carWeight }}</p>
+    <p><b>Pojemność silnika: </b>{{ visit?.car.engineCapacity }}</p>
+    <p><b>Moc: </b>{{ visit?.car.enginePower }}</p>
+    <p><b>Aktualny przebieg: </b>{{ visit?.visitCarCard.mileage }}</p>
+  </div>
+</div>

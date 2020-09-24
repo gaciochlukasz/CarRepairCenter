@@ -1,0 +1,18 @@
+<div *ngIf="mainBlockUI" class="main-app-loader">
+    <div fxLayout="column" fxLayoutAlign="center center">
+        <img src="../assets/img/logo2.png">
+        <mat-progress-spinner
+            color="warn"
+            mode="indeterminate"
+            value="50">
+        </mat-progress-spinner>
+    </div>
+</div>
+<div *ngIf="blockUI" class="app-loader">
+    <mat-progress-spinner
+        color="primmary"
+        mode="indeterminate"
+        value="50">
+    </mat-progress-spinner>
+</div>
+<router-outlet></router-outlet>

@@ -1,0 +1,42 @@
+<div fxFlex="30%" fxLayout="column">
+  <h3>Dodaj nowego pracownika</h3>
+  <form [formGroup]="form">
+    <div style="margin: 14px" fxFlex="100%" fxLayout="column" fxLayoutGap="7px">
+      <mat-form-field>
+        <input matInput placeholder="Imię" formControlName="name">
+        <mat-error>Pole wymagane</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Nazwisko" formControlName="lastName">
+        <mat-error>Pole wymagane</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+          <input matInput placeholder="Numer telefonu" formControlName="phoneNumber">
+          <mat-error>Pole wymagane</mat-error>
+        </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Email" formControlName="email">
+        <mat-error>Pole wymagane</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="password" placeholder="Hasło" formControlName="password">
+        <mat-error>Pole wymagane</mat-error>
+        <mat-error *ngIf="
+              form.get('password').hasError('required') ||
+              form.get('password').hasError('Len') ||
+              form.get('password').hasError('LowerCase') ||
+              form.get('password').hasError('UpperCase') ||
+              form.get('password').hasError('Digit') ||
+              form.get('password').hasError('SpecChar')
+            ">
+          Użyj co najmniej 8 znaków, małe i duże litery, cyfry oraz znaki specjalne.</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="password" placeholder="Powtórz hasło" formControlName="passwordRepeat">
+        <mat-error>Pole wymagane</mat-error>
+      </mat-form-field>
+      <button fxFlex="50%" mat-raised-button color="primary" type="submit" (click)="addNewEmployee()">Dodaj nowego
+        pracownika</button>
+    </div>
+  </form>
+</div>

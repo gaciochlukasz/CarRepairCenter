@@ -1,0 +1,86 @@
+<h1 mat-dialog-title>{{car.carBrand}} {{car.carName}} {{car.registrationNo}}</h1>
+<div mat-dialog-content>
+  <div fxLayoutAlign="center" fxLayout="row">
+    <div class="client-info" fxLayoutAlign="space-between stretch" fxLayout="column" fxFlex="100%">
+      <form [formGroup]="form">
+        <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="50px">
+          <div style="cursor: pointer;" (click)="picker2.open()" fxFlex="33%">
+            <mat-form-field fxFlex="100%">
+              <input maxLength="256" style="cursor: pointer;" matInput [matDatepicker]="picker2"
+                placeholder="Przewidywana data ukończenia naprawy" formControlName="receiptDate">
+              <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+              <mat-datepicker disabled="false" #picker2></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div fxFlex="33%">
+            <mat-form-field fxFlex="100%">
+              <input maxLength="256" type="text" matInput placeholder="Przebieg" formControlName="mileage" required />
+              <mat-error>Pole wymagane</mat-error>
+            </mat-form-field>
+          </div>
+          <div fxFlex="33%">
+            <mat-form-field fxFlex="100%">
+              <input maxLength="256" type="text" matInput placeholder="Przewidywany koszt naprawy" formControlName="estimateCost" />
+            </mat-form-field>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="50px">
+          <div fxFlex="33%">
+            <mat-form-field fxFlex="100%">
+              <textarea maxlength="1024" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="5"
+                cdkAutosizeMaxRows="10" placeholder="Pozostawione wartościowe przedmioty"
+                formControlName="valuables"></textarea>
+            </mat-form-field>
+          </div>
+          <div fxFlex="33%">
+            <mat-form-field fxFlex="100%">
+              <textarea maxlength="1024" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="5"
+                cdkAutosizeMaxRows="10" placeholder="Opis stanu technicznego z zewnątrz"
+                formControlName="externalConditionDescription"></textarea>
+            </mat-form-field>
+          </div>
+          <div fxFlex="33%">
+            <mat-form-field fxFlex="100%">
+              <textarea maxlength="1024" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="5"
+                cdkAutosizeMaxRows="10" placeholder="Opis usterki" formControlName="faultDescription"></textarea>
+            </mat-form-field>
+          </div>
+        </div>
+      </form>
+      <div style="margin-bottom: 24px" fxFlex="100%">
+        <div fxLayout="row" fxLayoutAlign="center">
+          <div fxFlex="33%">
+            <mat-checkbox fxFlex="100%" color="primary" [(ngModel)]="registrationDocument">Pozostawiony dowód rejestracyjny
+            </mat-checkbox>
+          </div>
+          <div fxFlex="33%">
+            <mat-checkbox fxFlex="100%" color="primary" [(ngModel)]="ocDocument">Pozostawiony dokument OC</mat-checkbox>
+          </div>
+          <div fxFlex="33%">
+            <mat-checkbox fxFlex="100%" color="primary" [(ngModel)]="keyLeft">Pozostawione kluczyki</mat-checkbox>
+          </div>
+        </div>
+        <div fxLayout="row"  fxLayoutAlign="center" style="padding-top: 14px">
+          <div fxFlex="33%">
+            <mat-checkbox fxFlex="100%" color="primary" [(ngModel)]="testDriveConsent">Zgoda na jazdę próbną</mat-checkbox>
+          </div>
+          <div fxFlex="33%">
+            <mat-checkbox fxFlex="100%" color="primary" [(ngModel)]="usedPatrsReturn">Zwrot zużytych części</mat-checkbox>
+          </div>
+          <div fxFlex="33%"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <div fxLayoutAlign="center" fxLayout="row" fxFlex="100%">
+    <div fxLayoutAlign="start" fxFlex="50%">
+      <button fxFlex="25%" mat-raised-button color="warn" (click)="dialogRef.close(false)">Anuluj</button>
+    </div>
+    <div fxLayoutAlign="end" fxFlex="50%">
+      <button fxFlex="25%" mat-raised-button color="primary" (click)="createVisitReapir(true)">Utwórz i rozpocznij</button>
+      <button fxFlex="25%" mat-raised-button color="primary" type="submit" (click)="createVisitReapir()">Utwórz</button>
+    </div>
+  </div>
+</div>

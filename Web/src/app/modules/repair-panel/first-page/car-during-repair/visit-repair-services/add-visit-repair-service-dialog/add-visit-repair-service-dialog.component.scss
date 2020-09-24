@@ -1,0 +1,9 @@
+h3 {
+  margin-bottom: 7px;
+}
+
+:host::ng-deep {
+  .mat-dialog-title {
+    margin-bottom: 0;
+  }
+}

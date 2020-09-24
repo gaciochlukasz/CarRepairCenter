@@ -1,0 +1,15 @@
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+:host::ng-deep {
+  .action-header .mat-sort-header-container {
+    display: flex;
+    justify-content: center;
+  }
+}
