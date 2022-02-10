@@ -33,7 +33,7 @@
     "core-js": "^2.6.1",
     "cors": "^2.8.5",
     "hammerjs": "^2.0.8",
-    "node-sass": "^4.11.0",
+    "node-sass": "^7.0.0",
     "rxjs": "^6.3.3",
     "rxjs-compat": "^6.3.3",
     "sass-loader": "^7.1.0",
